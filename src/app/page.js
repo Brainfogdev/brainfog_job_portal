@@ -243,9 +243,9 @@ export default function Page() {
                   </div>
                   <div className="text-left">
                     <p className="font-heading font-600 text-gray-900">
-                      Vishwanath Chauhan
+                      Osama Sharif
                     </p>
-                    <p className="text-sm text-gray-500">Founder & CEO</p>
+                    <p className="text-sm text-gray-500">Co-Founder & CTO</p>
                   </div>
                 </div>
               </div>
