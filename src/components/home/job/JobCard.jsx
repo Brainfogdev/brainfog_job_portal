@@ -30,13 +30,30 @@ export default function JobCard({ job = {} }) {
     return skillColors[Math.abs(hash) % skillColors.length];
   }
 
+
   // --- FINALIZED SHARE FUNCTION ---
   async function handleShare(e) {
     e.stopPropagation();
 
     const applyLink = `${window.location.origin}/${job.id}`;
-    const descriptionSnippet = job.jobDescription
-      ? `${job.jobDescription.slice(0, 120)}...`
+
+    // Clean the job description for sharing
+    let cleanDescription = "";
+    if (job.jobDescription) {
+      cleanDescription = job.jobDescription
+        .replace(/<[^>]*>/g, '')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    const descriptionSnippet = cleanDescription
+      ? `${cleanDescription.slice(0, 120)}...`
       : "Join our innovative team and help shape the future of technology.";
 
     const shareText = `🚀 Exciting opportunity at Brainfog Agency!
@@ -140,11 +157,32 @@ ${applyLink}`;
 
         {/* Description */}
         <p className="text-sm text-gray-700 line-clamp-3 leading-relaxed mb-5 flex-grow break-words">
-          {job?.jobDescription
-            ? job.jobDescription.length > 120
-              ? job.jobDescription.slice(0, 120) + "..."
-              : job.jobDescription
-            : "Join our innovative team and help shape the future of technology. We're looking for passionate individuals who want to make a real impact in a fast-growing startup environment."}
+          {(() => {
+            if (!job?.jobDescription) {
+              return "Join our innovative team and help shape the future of technology. We're looking for passionate individuals who want to make a real impact in a fast-growing startup environment.";
+            }
+
+            // Strip HTML and clean up the text
+            let cleanText = job.jobDescription
+              .replace(/<[^>]*>/g, '') // Remove all HTML tags
+              .replace(/&nbsp;/g, ' ') // Replace &nbsp; with space
+              .replace(/&amp;/g, '&')
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&quot;/g, '"')
+              .replace(/&#39;/g, "'")
+              .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+              .trim(); // Remove leading/trailing spaces
+
+            // If still empty after cleaning, use default
+            if (!cleanText) {
+              return "Join our innovative team and help shape the future of technology. We're looking for passionate individuals who want to make a real impact in a fast-growing startup environment.";
+            }
+
+            return cleanText.length > 120
+              ? cleanText.slice(0, 120) + "..."
+              : cleanText;
+          })()}
         </p>
 
         {/* Skills */}

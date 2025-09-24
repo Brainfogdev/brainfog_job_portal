@@ -615,6 +615,84 @@ html, body {
   width: 100%;
 }
 
+/* Job Description HTML Content Styling */
+.job-description h1,
+.job-description h2,
+.job-description h3,
+.job-description h4,
+.job-description h5,
+.job-description h6 {
+  margin: 1.5rem 0 1rem 0;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.job-description h1 { font-size: 1.875rem; }
+.job-description h2 { font-size: 1.5rem; }
+.job-description h3 { font-size: 1.25rem; }
+.job-description h4 { font-size: 1.125rem; }
+.job-description h5 { font-size: 1rem; }
+.job-description h6 { font-size: 0.875rem; }
+
+.job-description p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.job-description ul,
+.job-description ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.job-description li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.job-description ul li {
+  list-style-type: disc;
+}
+
+.job-description ol li {
+  list-style-type: decimal;
+}
+
+.job-description strong {
+  font-weight: 600;
+  color: #374151;
+}
+
+.job-description em {
+  font-style: italic;
+}
+
+.job-description blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid #3b82f6;
+  background: #f8fafc;
+  font-style: italic;
+  color: #4b5563;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.job-description blockquote p {
+  margin: 0;
+}
+
+.job-description br {
+  line-height: 2;
+}
+
+.job-description > *:first-child {
+  margin-top: 0;
+}
+
+.job-description > *:last-child {
+  margin-bottom: 0;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -23,10 +23,13 @@ export default function JobDetails({ job }) {
           <section>
             <h3 className="font-heading text-xl font-600 text-gray-900 mb-6">About This Role</h3>
             <div className="prose max-w-none">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {job.jobDescription ||
-                  "Join our team and contribute to building innovative solutions that make a real difference. You'll work alongside talented individuals who are passionate about creating meaningful impact through technology."}
-              </p>
+              <div
+                className="text-lg text-gray-700 leading-relaxed job-description"
+                dangerouslySetInnerHTML={{
+                  __html: job.jobDescription ||
+                    "Join our team and contribute to building innovative solutions that make a real difference. You'll work alongside talented individuals who are passionate about creating meaningful impact through technology."
+                }}
+              />
             </div>
           </section>
 
@@ -35,9 +38,12 @@ export default function JobDetails({ job }) {
             <section>
               <h3 className="font-heading text-lg font-600 text-gray-900 mb-4">What We're Looking For</h3>
               <div className="prose max-w-none">
-                <p className="text-gray-700 leading-relaxed">
-                  {job.additionalNotes}
-                </p>
+                <div
+                  className="text-gray-700 leading-relaxed"
+                  dangerouslySetInnerHTML={{
+                    __html: job.additionalNotes
+                  }}
+                />
               </div>
             </section>
           )}
